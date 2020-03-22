@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <Logout></Logout>
     <h1>{{ msg }}</h1>
     <h2>您是否登录：{{isLoggedIn}}</h2>
     <h2>webpack跨域处理</h2>   
@@ -9,9 +10,13 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState} from 'vuex';
+import Logout from '@/components/Logout'
 export default {
   name: 'HelloWorld',
+  components:{
+    Logout
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
@@ -26,10 +31,10 @@ export default {
     }
   },
   computed:{
-    ...mapState{
+    ...mapState({
       isLoggedIn:'isLoggedIn'
-    }
-  }
+    })
+  }  
 }
 </script>
 

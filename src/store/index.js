@@ -3,21 +3,28 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
-        isLoggedIn:!!localStorage.getItem('token'),
-        isLog:!!localStorage.getItem('situation')
+        isLoggedIn:!!localStorage.getItem('token')        
     },
     mutations:{
         loginUser(state){
-            state.isLoggedIn = true
-            state.isLog = true
+            localStorage.setItem('token',true);
+           
         },
         logoutUser(state){
-            state.isLoggedIn = false
-            state.isLog = false
+            localStorage.removeItem('token');        
         }
 
     },
+    /**
+     * actions和mutations的区别是
+     * 1、actions可以异步，但是mutaions只能同步
+     * 2、actions利于devtools追踪
+     */
     actions:{
-
+        login(context){
+            setTimeout(() => {                
+                context.commit('loginUser');
+            }, 200);
+        },        
     }
 })
