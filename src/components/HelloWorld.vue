@@ -26,8 +26,11 @@ export default {
   methods:{
     crossDomain:function(){
        this.axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => (this.info = response))
+      // .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .get('/jsonp')
+      .then(response => (
+        this.info = response
+        ));
     }
   },
   computed:{

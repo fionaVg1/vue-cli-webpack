@@ -1,18 +1,18 @@
 const webpack = require('webpack');
 const path = require('path');
 module.exports = {
-    entry:{
-        vendor:['jquery']
+    entry: {
+        vendor: ['jquery']
     },
-    output:{
-        path:path.resolve(__dirname ,'src/dll'),
-        filename:'[name].js',
-        library:'[name]_library'
+    output: {
+        path: path.resolve(__dirname),
+        filename: '[name].js',
+        library: '[name]_library'
     },
-    plugins:[
+    plugins: [
         new webpack.DllPlugin({
-            path:path.join(__dirname,'/src/dll','[name].json'),
-            name:'[name]_library'
+            path: path.join(__dirname, '[name].json'),
+            name: '[name]_library',
         })
     ]
 }
