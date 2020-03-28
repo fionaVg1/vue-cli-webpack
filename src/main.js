@@ -9,6 +9,7 @@ import $ from 'jquery'
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
+Vue.prototype.bus = new Vue();
 Vue.prototype.$ = $
 
 /* eslint-disable no-new */

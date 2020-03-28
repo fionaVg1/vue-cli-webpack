@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript大数相加</title>
+    <script src="./node_modules/mathjs/dist/math.js"></script>
+    <script src="./node_modules/underscore/underscore.js"></script>
+</head>
+
+<body>
+    <script>
+        class MyMath {
+            constructor() {
+
+            }
+            add(params1, params2) {
+                var charsArr1 = params1.split('');
+                var charsArr2 = params2.split('');
+                var resultArr = [];
+                let len1 = charsArr1.length;
+                let len2 = charsArr2.length;
+                var maxLen = Math.max(len1, len2);
+                var carry = 0;
+                for (let i = maxLen - 1; i >= 0; i--) {
+                    var p1 = 0,
+                        p2 = 0,
+                        s, s1;
+                    if (len1 - 1 >= i) {
+                        p1 = parseInt(charsArr1[i]);
+                    }
+                    if (len2 - 1 >= i) {
+                        p2 = parseInt(charsArr2[i]);
+                    }
+                    s = p1 + p2 + carry;
+                    if (s >= 10) {
+                        carry = 1;
+                        s1 = parseInt(s.toString().split('')[1]);
+                    } else {
+                        carry = 0;
+                        s1 = s;
+                    }
+                    resultArr.push(s1);
+                    if (i == 0 && carry == 1) {
+                        resultArr.push(carry);
+                    }
+                }
+                var resultStr = resultArr.reverse().join('');
+                console.log(resultStr);
+            }
+        }
+        var myClass = new MyMath();
+        // var result = myClass.add('105222222222222222222222222', '105222222222222222222222221');
+        function flatten(array, result) {
+            result = result || [];
+            array.forEach(element => {
+                if (Array.isArray(element)) {
+                    flatten(element, result);
+                } else {
+                    result.push(element);
+                }
+            });
+            return result;
+        }
+        var arr = [2, [3, 4],
+            [
+                [5],
+                [6]
+            ]
+        ];
+        var result = flatten(arr);
+        console.log(result);
+
+        function flattenObj(obj, tempKey, resultObj) {
+            tempKey = tempKey || '';
+            resultObj = resultObj || {};
+            for (let key in obj) {
+                var value = obj[key];
+                tempKey = tempKey + key + '.';
+                if (typeof value == 'object') {
+                    flattenObj(value, tempKey, resultObj);
+                } else {
+                    resultObj[tempKey] = value;
+                }
+            };
+            return resultObj;
+        }
+        var entryObj = {
+            a: {
+                b: {
+                    c: {
+                        dd: 'abcdd'
+                    }
+                },
+                d: {
+                    xx: 'adxx'
+                },
+                e: 'ae'
+            }
+        };
+        var result = flattenObj(entryObj);
+        console.log(result);
+
+        for (var i = 0; i <= 10; i++) {
+            setTimeout(() => {
+                console.log(i);
+            }, 1000 * i);
+        }
+        for (let i = 0; i <= 10; i++) {
+            setTimeout(() => {
+                console.log(i);
+            }, 1000 * i);
+        }
+        for (var i = 0; i <= 10; i++) {
+            (function(i) {
+                setTimeout(() => {
+                    console.log(i);
+                }, 1000 * i);
+            })(i);
+        }
+        // var iterator = createIterator([1, 2, 3]);
+        // iterator.next();
+        // iterator.next();
+        // iterator.next();
+        class Private {
+            constructor() {
+
+            }
+            _getValue() {
+                console.log('仅限内部使用的方法');
+            }
+        }
+
+        var p = new Private();
+        var proxy = new Proxy(p, {
+            get: function(target, key) {
+                if (key[0] === '_') {
+                    // new Error('内部方法不能被获取');
+                    throw "Parameter is not a number!";
+                }
+                return target[key];
+            },
+            set: function(target, key, value) {
+                if (key[0] === '_') {
+                    new Error('内部方法不能被修改');
+                }
+                target[key] = value;
+            }
+        });
+        proxy._getValue();
+    </script>
+
+</body>
+
+</html>

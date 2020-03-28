@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <img class="myImg" src="./assets/logo.png">
     <router-view/>
-    <div class="row">
+   <img class="myImg" src="./assets/logo.png" @click="change">
+   <!--  <div class="row">
       <div class="row-item">row1</div>
       <div class="row-item">row2</div>
       <div class="row-item">row3</div>
@@ -25,13 +25,19 @@
     <div>
       <span>background-image和background-color一起使用的问题</span>
       <div class="myDiv"></div>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
+import {mutations}  from './myStore';
 export default {
-  name: 'App'
+  name: 'App',
+  methods:{
+    change:function(e){      
+      mutations.changeDep('789');
+    }
+  }
 }
 </script>
 

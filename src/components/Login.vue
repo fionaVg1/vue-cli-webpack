@@ -1,38 +1,38 @@
 <template>
     <div id="login">
+        <div>{{msg}}</div>
+        <div>计算属性{{a}}</div>
         <button @click="login">login</button>
     </div>
 </template>
 <script>
+import { store } from "../myStore";
 export default {
   name: "Login",
+  data(){
+      return {
+          msg:'',
+      }
+  },
   methods: {
     login: function() {
       this.$store.dispatch("login");
       this.$router.push({path: '/index'});
-      this.jsonpTest();
-    },
-    jsonpTest: function() {
-      this.$.ajax({
-        type: "get",
-        // url:
-        //   "https://movie.douban.com/j/search_tags?type=tv&source=index?callback=jsonpCallback",
-        // url:'https://api.coindesk.com/v1/bpi/currentprice.json?callback=jsonpCallback',
-        url:'http://172.20.49.106:3000/jsonp?callback=jsonpCallback',
-        // data: '',
-        dataType: "jsonp",
-        crossDomain: true,
-        success: function(msg) {
-          console.log(msg);
-        },
-        error: function(msg) {
-          console.log(msg);
-        },
-        jsonpCallback: function(msg) {
-          console.log(msg);
-        }
-      });
+      this.ajaxTest();
+    },    
+    ajaxTest:function(){
+        this.$('#login').css('border','1px solid gray');
     }
+  },
+  mounted(){
+        this.bus.$on('changeDep',(msg)=>{
+            this.msg = '由App.vue点击图片触发'+msg;
+        })
+  },
+  computed:{
+      a(){
+          return store.a;
+      }
   }
 };
 </script>

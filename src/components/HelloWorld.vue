@@ -6,16 +6,18 @@
     <h2>webpack跨域处理</h2>   
     <button @click="crossDomain">webpack跨域</button>
     <div class="info">{{info}}</div>
+    <Math></Math>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex';
 import Logout from '@/components/Logout'
+import Math from '@/components/math'
 export default {
   name: 'HelloWorld',
   components:{
-    Logout
+    Logout,Math
   },
   data () {
     return {
