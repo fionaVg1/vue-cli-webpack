@@ -35,7 +35,7 @@ export default {
   name: 'App',
   methods:{
     change:function(e){      
-      mutations.changeDep('789');
+      mutations.changeDep('789');     
     }
   }
 }

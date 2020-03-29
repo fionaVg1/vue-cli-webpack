@@ -6,7 +6,9 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import $ from 'jquery'
+import vuexpl from './vuexpl'
 
+Vue.use(vuexpl);
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 Vue.prototype.bus = new Vue();

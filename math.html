@@ -149,6 +149,34 @@
             }
         });
         proxy._getValue();
+        var a = {a:1}
+
+        class PubSub{
+            constructor(){
+                this.events = {};
+            }
+            publish(eventName,data){
+                if(this.events[eventName]){
+                    this.events[eventName].forEach((e)=>{
+                        e.call(this.data);
+                    })
+                }
+            }
+            subscribe(eventName,callback){
+                if(this.events[eventName]){
+                    this.events[eventName].push(callback);
+                }else{
+                    this.events[eventName] = [callback];
+                }
+            }
+            unSubscribe(eventName,callback){
+                if(this.events[events]){
+                    this.events[eventName] = this.events[eventName].filter((e)=>{
+                        e !== callback;
+                    });
+                }
+            }
+        }
     </script>
 
 </body>

@@ -4,6 +4,7 @@
     <h1>{{ msg }}</h1>
     <h2>您是否登录：{{isLoggedIn}}</h2>
     <h2>webpack跨域处理</h2>   
+    <div>我是通过vuex模块拆分动态引入的{{$store.state}}</div>
     <button @click="crossDomain">webpack跨域</button>
     <div class="info">{{info}}</div>
     <Math></Math>
@@ -16,6 +17,7 @@ import Logout from '@/components/Logout'
 import Math from '@/components/math'
 export default {
   name: 'HelloWorld',
+  isVuex:true,
   components:{
     Logout,Math
   },
@@ -37,7 +39,8 @@ export default {
   },
   computed:{
     ...mapState({
-      isLoggedIn:'isLoggedIn'
+      isLoggedIn:'isLoggedIn',
+      number1:'number1',
     })
   }  
 }
