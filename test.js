@@ -1,36 +1,19 @@
-async function example(params){
-    //
-}
-function example(params){
-    return spawn(function*(){
-        //
-    });
-}
-function spawn(genF){
-    return new Promise(function(resolve,reject){
-        const gen = genF();//生成器对象
-        function step(nextF){
-            let next;
-            try {
-                next = nextF();//执行gen.next
-            } catch (error) {
-                return reject(e);
-            }
-            if(next.done){
-                return resolve(next.value);
-            }
-            Promise.resolve(next.value).then(function(v){
-                step(function(){
-                    return gen.next(v);
-                })
-            },function(e){
-                step(function(){
-                    return gen.throw(e);
-                })
-            });
+// 字符串由六个字符'{'、'}'、'['、']'、'('、')'随机组成，通过一个方法判断该字符串能否全部配对。如'{[()]}'、'[{}]()'能够配对，'[{})'、'{( })'无法配对。提示：字符串先转成数组
+function isMatch(string) {
+    var tagArr = [];
+    var strArr = string.split('');
+    for (let s of strArr) {
+        if (s === '{') {
+            tagArr.push('}');
+        } else if (s === '[') {
+            tagArr.push(']');
+        } else if (s === '(') {
+            tagArr.push(')');
+        } else if (tagArr.pop() !== s) {
+            return false;
         }
-        step(function(){
-            return gen.next(undefined);
-        })
-    });
+    }
+    return true;
 }
+isMatch('{([])}'); //true
+isMatch('[{]}'); //false

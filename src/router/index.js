@@ -2,25 +2,26 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
+import testSwiper from '@/components/testSwiper'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/index',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-  ]
+    mode: 'history',
+    routes: [{
+            path: '/',
+            name: 'Login',
+            component: Login
+        },
+        {
+            path: '/index',
+            name: 'HelloWorld',
+            component: HelloWorld
+        },
+        {
+            path: '/testSwiper',
+            name: 'testSwiper',
+            component: testSwiper
+        }
+    ]
 })
-
-
-setTimeout(function(){
-//这里放逻辑处理
-},20000);
