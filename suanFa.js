@@ -51,11 +51,11 @@ function swap(arr, i, from) {
 // calAll(arr, 0);
 
 /**
- * 选择排序
+ * 冒泡排序
  */
 var arr = [2, 7, 9, 4, 6, 3];
 
-function selectSort(arr) {
+function bubbleSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         for (let j = i + 1; j < arr.length; j++) {
             if (arr[i] > arr[j]) {
@@ -67,7 +67,22 @@ function selectSort(arr) {
     }
     console.log(arr);
 }
-selectSort(arr);
+bubbleSort(arr);
+
+/**
+ * 选择排序
+ */
+function selectSort(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        var minIndex = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        let temp = arr[minIndex]
+    }
+}
 /**
  * 旋转字符串
  * abcdef
