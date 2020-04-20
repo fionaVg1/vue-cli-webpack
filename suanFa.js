@@ -129,3 +129,28 @@ function huiWen(str) {
     }
 }
 huiWen(str2);
+
+//快速排序
+let arr = [3,1,3,5,7,9,8];
+function partion(arr,low,high){
+    let privot = arr[low];
+    while(low < high){
+        while(low<high && arr[high]>privot){
+            high--;
+        }
+        arr[low] = arr[high];
+        while(low<high && arr[low]<= privot){
+            low++;
+        }
+    }
+    arr[low] = privot;
+    return low;
+}
+function quickSort(arr,low,high){ 
+    if(low<high){
+        let index = partion(arr,low,high);
+        quickSort(arr,0,index-1);
+        quickSort(arr,index+1,high);
+    }  
+}
+quickSort(arr,0,arr.length-1);
