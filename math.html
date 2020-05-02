@@ -15,19 +15,16 @@
 </head>
 
 <body>
-    <div style="border:1px solid grey; width:100px;height: 100px;margin-bottom: 10px;">
-        div1
+    <div id="test">
+        <ul id="ul">
+            <li id="test1">test</li>
+            <li id="test2">test2</li>
+        </ul>
     </div>
-    <div id="selectStart" style="border:1px solid black;width:100px;height: 100px;margin-top: 10px;">
-        div2
-    </div>
-    <div class="parent" style="background:yellow;width:  100px;height: 100px;margin-top: 20px;">
-        <div class="child" style="background:blue;width: 50px;height: 50px;margin-top: 10px;"></div>
-    </div>
-    <a href="" id="size12">切换12字体</a>
-    <a href="#" id="size14">切换14字体</a>
-    <a href="https://www.baidu.com/" id="size16">baidu</a>
     <script>
+        document.getElementById('ul').addEventListener('click', function(e) {
+            console.log(e.target.tagName + '-----' + e.currentTarget.tagName);
+        });
     </script>
     <script src="test.js"></script>
 

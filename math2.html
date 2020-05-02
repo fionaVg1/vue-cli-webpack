@@ -14,15 +14,53 @@
 </head>
 
 <body>
-
-    <div>{{message}}</div>
-
+    <div id="app">
+        <div id="message">{{message}}</div>
+        <ul>
+            <li v-for="item in items" :key="item.type">{{item.name}}</li>
+        </ul>
+        <button v-on:click="updateFirst">第一次操作</button>
+        <button v-on:click="updateSecond">第二次操作</button>
+    </div>
     <script src="./node_modules/vue/dist/vue.js"></script>
     <script src="./suanFa.js"></script>
     <script>
         let vm = new Vue({
+            el: '#app',
             data: {
-                id: 'fiona'
+                id: 'fiona',
+                message: 'diff测试',
+                items: [{
+                    type: 'button',
+                    name: '按钮'
+                }, {
+                    type: 'input',
+                    name: '输入框'
+                }, {
+                    type: 'select',
+                    name: '下拉框'
+                }]
+            },
+            methods: {
+                updateFirst: function(e) {
+                    this.items.splice(1, 0, {
+                        type: 'checkbox',
+                        name: '勾选'
+                    });
+                    this.items.pop();
+                    this.message = '信息';
+                    vm.$nextTick(function() {
+                        var message = document.getElementById('message');
+                        console.log(message.value);
+                    })
+                },
+                updateSecond: function(e) {
+                    this.items.splice(2, 0, {
+                        type: 'radio',
+                        name: 'radio按钮'
+                    });
+
+                }
             }
         });
         console.log(vm.$options);

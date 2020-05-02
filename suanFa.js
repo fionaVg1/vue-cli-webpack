@@ -72,6 +72,8 @@ bubbleSort(arr);
 /**
  * 选择排序
  */
+var arr = [2, 7, 9, 4, 6, 3];
+
 function selectSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         var minIndex = i;
@@ -80,9 +82,53 @@ function selectSort(arr) {
                 minIndex = j;
             }
         }
-        let temp = arr[minIndex]
+        let temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
     }
 }
+selectSort(arr);
+
+/**
+ * 插入排序
+ */
+var arr = [2, 7, 9, 4, 6, 3];
+
+function insertSort(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        var preIndex = i - 1;
+        var current = arr[i];
+        while (preIndex >= 0 && arr[preIndex] > current) {
+            arr[preIndex + 1] = arr[preIndex];
+            preIndex--;
+        }
+        arr[preIndex + 1] = current;
+    }
+}
+insertSort(arr);
+//计数排序
+var arr = [2, 5, 3, 0, 2, 3, 0, 3];
+
+function countSort(arr, maxValue) {
+    var bucketLen = maxValue + 1;
+    var sortIndex = 0;
+    var bucket = new Array(bucketLen);
+    for (let j = 0; j < arr.length; j++) {
+        if (!bucket[arr[j]]) {
+            bucket[arr[j]] = 0;
+        }
+        bucket[arr[j]]++;
+    }
+    for (let i = 0; i < bucketLen; i++) {
+        while (bucket[i] > 0) {
+            arr[sortIndex++] = i;
+            bucket[i]--;
+        }
+
+    }
+    return arr;
+}
+countSort(arr, 5);
 /**
  * 旋转字符串
  * abcdef
@@ -129,28 +175,3 @@ function huiWen(str) {
     }
 }
 huiWen(str2);
-
-//快速排序
-let arr = [3,1,3,5,7,9,8];
-function partion(arr,low,high){
-    let privot = arr[low];
-    while(low < high){
-        while(low<high && arr[high]>privot){
-            high--;
-        }
-        arr[low] = arr[high];
-        while(low<high && arr[low]<= privot){
-            low++;
-        }
-    }
-    arr[low] = privot;
-    return low;
-}
-function quickSort(arr,low,high){ 
-    if(low<high){
-        let index = partion(arr,low,high);
-        quickSort(arr,0,index-1);
-        quickSort(arr,index+1,high);
-    }  
-}
-quickSort(arr,0,arr.length-1);
