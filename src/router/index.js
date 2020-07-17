@@ -6,6 +6,8 @@ import Login from '@/components/Login'
 import testSwiper from '@/components/testSwiper'
 import ModuleThink from '@/components/ModuleThink'
 import Gallery from '@/components/Gallery'
+import List from '@/components/List'
+import Good from '@/components/Good'
 
 Vue.use(Router)
 
@@ -35,6 +37,16 @@ export default new Router({
             path: '/gallery',
             name: 'Gallery',
             component: Gallery
+        },
+        {
+            path:'/list',
+            name:'List',
+            component:List
+        },
+        {
+            path:'/good',
+            name:'Good',
+            component:Good
         }
     ]
 })
