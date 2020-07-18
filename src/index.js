@@ -7,6 +7,7 @@ import store from './store'
 import axios from 'axios'
 import $ from 'jquery'
 import vuexpl from './vuexpl'
+axios.defaults.baseURL = 'http://localhost:3000/';
 
 Vue.use(vuexpl);
 Vue.config.productionTip = false
@@ -18,6 +19,7 @@ Vue.prototype.$ = $
 //状态模式：状态：3种 见sateDesign.js
 //策略模式
 //单例模式
+//享元模式减少重复操作
 if(!window.mycache){
     //备忘录模式
     window.mycache = (function(){
@@ -26,7 +28,7 @@ if(!window.mycache){
         //解决缓存的量引起的内存，存储的压力
         window.cacheArr = [[],[]];
         return {
-            get:function(){
+            get:function(api){
                 return new Promise((resolve,reject)=>{
                     if(cache[api]){
                         resolve(cache[api])
@@ -57,11 +59,11 @@ if(!window.mycache){
                     }
                 })
             },
-            set:function(){
-
+            set:function(api){
+                return axios.get(api);
             },
-            remove:function(){
-
+            remove:function(api){
+                delete cache(api)
             }
         }
     })()

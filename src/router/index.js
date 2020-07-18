@@ -44,7 +44,7 @@ export default new Router({
             component:List
         },
         {
-            path:'/good',
+            path:'/good/*',
             name:'Good',
             component:Good
         }
