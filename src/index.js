@@ -7,6 +7,7 @@ import store from './store'
 import axios from 'axios'
 import $ from 'jquery'
 import vuexpl from './vuexpl'
+import Mock from 'mockjs'
 
 Vue.use(vuexpl);
 Vue.config.productionTip = false
@@ -65,6 +66,16 @@ if(!window.mycache){
             }
         }
     })()
+}
+
+//使用mock方法拦截接口
+if(process.env.NODE_ENV !== 'production'){
+    Mock.mock(/v1\/bpi/,{
+        code:200,
+        data:{
+            'isLeagal|2-1':false,
+        }
+    });
 }
 /* eslint-disable no-new */
 new Vue({

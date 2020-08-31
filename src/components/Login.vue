@@ -27,7 +27,11 @@ export default {
   mounted(){
         this.bus.$on('changeDep',(msg)=>{
             this.msg = '由App.vue点击图片触发'+msg;
-        })
+        });
+        this.axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => (this.info = response))
+
   },
   computed:{
       a(){
