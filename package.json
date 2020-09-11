@@ -17,6 +17,9 @@
     "buildDev": "webpack --config build/webpack.dev.conf.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "element-ui": "^2.13.1",
+    "mathjs": "^7.1.0",
     "ant-design-vue": "^1.6.5",
     "axios": "^0.19.2",
     "element-ui": "^2.13.1",

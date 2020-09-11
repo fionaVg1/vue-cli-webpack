@@ -27,12 +27,14 @@
     }
 </script>
 <style scoped>
+    .listTopBar,.more .cor{
+        background:url('../assets/img/index.png') no-repeat 0 9999px
+    }
     .listTopBar{
         height: 33px;
         padding:0 10px 0 34px;
         background-position: -225px -156px;
         border-bottom: 2px solid #c10d0c;
-        background:url('../assets/img/index.png')
     }
     .more .cor{
         display:inline-block;
@@ -40,8 +42,7 @@
         height:12px;
         margin-left: 4px;
         vertical-align: middle;
-        background-position: 0 -240px;
-        background:url('../assets/img/index.png');
+        background-position: 0 -240px;       
     }
     .firstLink{
         float:left;

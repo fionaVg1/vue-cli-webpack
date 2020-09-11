@@ -17,7 +17,7 @@
             }
         },
         mounted:function(){
-            mycache.get('/api/'+this.$route.params.goodApi).then(res=>{
+            mycache.get('/api/'+this.$route.params.pathMatch).then(res=>{
                 this.goodInfo = res.data;
             })
         }

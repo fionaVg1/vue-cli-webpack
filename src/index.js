@@ -8,12 +8,12 @@ import axios from 'axios'
 import ref from 'vue-ref'
 import 'ant-design-vue/dist/antd.css';
 import './assets/css/index.css'
+axios.defaults.baseURL = 'http://localhost:3000/';
 
 Vue.config.productionTip = false
 Vue.config.silent = false;
 Vue.prototype.axios = axios
-Vue.use(ref,{name:'ant-ref'});
-
+Vue.use(ref,{name:'ant-ref'});  
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
