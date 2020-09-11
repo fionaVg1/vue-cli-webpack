@@ -27,6 +27,9 @@
                 {href:'',name:'电子'}
             ];
             var uri = '/discover/playlist/?cat=';
+            this.tabList.forEach(element => {
+                element.href = uri + encodeURI(element.name);
+            });
             this.moreLink = {
                 href:'/discover/playlist/',name:'更多'
             };
