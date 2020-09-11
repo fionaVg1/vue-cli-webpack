@@ -1,0 +1,9 @@
+em, i {
+    font-style: normal;
+    text-align: left;
+    font-size: inherit;
+}
+body {
+    min-width: 982px;
+    background: #f5f5f5;
+}

@@ -50,8 +50,8 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+        color: #2c3e50;  
+        height: 100%;         
     }
     
     .row {
@@ -102,9 +102,5 @@
         /*float和nofloat之间的外边距是60px，并没有进行合并处理*/
         margin-top: 20px;
     }
-    
-    .myDiv {
-        background-color: aqua;
-        background-image: url("./assets/logo.png")
-    }
+   
 </style>

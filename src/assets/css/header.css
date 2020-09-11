@@ -1,0 +1,36 @@
+.nav .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected, .nav .ant-menu.ant-menu-dark .ant-menu-item-selected{
+    background-color: #000;
+}
+.nav2 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected, .nav2 .ant-menu.ant-menu-dark .ant-menu-item-selected{
+    background-color: #C20C0C;
+}
+.nav2 em{
+    display: inline-block;
+    height: 20px;
+    padding: 0 13px;  
+    border-radius: 20px;
+    line-height: 21px;    
+}
+.nav2 .ant-menu-item-selected em,.nav2 .ant-menu-item em:hover{
+    background-color: #9B0909;    
+}
+.nav .ant-input-search input{
+    border-radius: 20px;
+}
+.nav .ant-btn-primary{
+    border-radius: 20px;
+    border: 1px solid #4F4F4F;
+    color: #ccc;
+}
+.nav .ant-btn-link{
+    color: #ccc;
+}
+.nav .ant-btn:hover{
+    color:#fff;
+}
+.nav .ant-btn-primary:hover{
+    border: 1px solid #fff;
+}
+.nav .ant-btn-link:hover{
+    text-decoration: underline;
+}

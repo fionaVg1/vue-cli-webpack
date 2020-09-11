@@ -12,12 +12,9 @@ module.exports = {
         assetsPublicPath: '/',
         //综合收件
         proxyTable: {
-            '/jsonp': {
+            '/api/*': {
                 target: "http://172.20.49.106:3000/", //开发环境
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/jsonp': 'jsonp'
-                }
+                changeOrigin: true,               
             },
         },
 
@@ -68,7 +65,7 @@ module.exports = {
          * Source Maps
          */
 
-        productionSourceMap: true,
+        productionSourceMap: false,
         // https://webpack.js.org/configuration/devtool/#production
         devtool: '#source-map',
 
