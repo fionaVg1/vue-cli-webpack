@@ -6,8 +6,7 @@
         <a-layout-content :style="{padding:'0 50px',margin:'0 auto',width:'1110px',marginTop:'104px'}">
             <router-view></router-view>
         </a-layout-content>
-        <a-layout-footer>
-            test
+        <a-layout-footer>            
         </a-layout-footer>
     </a-layout>
 </template>

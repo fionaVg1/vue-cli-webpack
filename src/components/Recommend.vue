@@ -1,22 +1,28 @@
 <template>
     <div class="recommend">
-        <a-carousel arrows autoplay style="height: 285px;">
+        <a-carousel arrows autoplay style="width:980px;margin:0 auto;height: 285px;">
             <div
-            slot="prevArrow"
-            slot-scope="props"
+            slot="prevArrow"  
             class="custom-slick-arrow"
             style="left: 10px;z-index: 1"
             >
                 <a-icon type="left-circle" />
             </div>
-            <div slot="nextArrow" slot-scope="props" class="custom-slick-arrow" style="right: 10px">
+            <div slot="nextArrow" class="custom-slick-arrow" style="right: 10px">
                 <a-icon type="right-circle" />
             </div> 
-            <div v-for="image in imgUrls">
+            <div v-for="(image,i) in imgUrls" :key="i">
                 <img :src="image.src" style="height:285px;width: 100%;"/>
             </div> 
         </a-carousel>
-        <HotRecommendGrid></HotRecommendGrid>
+        <div class="discoverModule">
+            <div class="left">
+                <HotRecommendGrid></HotRecommendGrid>
+            </div>
+            <div class="right">
+
+            </div>
+        </div>
     </div> 
 </template>
 <script>
@@ -82,5 +88,20 @@
 
 .ant-carousel >>> .slick-slide h3 {
   color: #fff;
+}
+.discoverModule {
+    width: 980px;
+    min-height: 700px;
+    margin: 0 auto;
+    border:1px solid #d3d3d3;
+    border-width:0 1px;
+    background: url('../assets/img/wrap1.png') repeat-y 100% 100%;
+}
+.discoverModule .left{
+    margin-right: 251px;
+}
+.discoverModule .right{
+    float:right;
+    width:250px;
 }
 </style>

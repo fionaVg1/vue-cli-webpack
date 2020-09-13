@@ -1,7 +1,7 @@
 <template>
     <div class="listTopBar">
         <a href="firstLink.href" class="firstLink">{{firstLink.name}}</a>
-        <div class="tab" v-for="(tab,i) in tabList">
+        <div class="tab" v-for="(tab,i) in tabList" :key="i">
             <a :href="tab.href" class="tabLink">{{tab.name}}</a>
             <span class="line" v-if="i !== tabList.length-1">|</span>
         </div> 
@@ -60,5 +60,12 @@
     .more{
         float: right;
         margin-top: 9px;
+    }
+    .tabLink{
+        color: #666;
+    }
+    .line{
+        color: #ccc;
+        margin: 0 10px;
     }
 </style>
