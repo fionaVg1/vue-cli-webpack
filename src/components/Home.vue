@@ -7,16 +7,16 @@
             <router-view></router-view>
         </a-layout-content>
         <a-layout-footer>            
-        </a-layout-footer>
+        </a-layout-footer>       
     </a-layout>
 </template>
 <script>
-    import Header from './Header';
+    import Header from './Header';   
     import {Layout} from 'ant-design-vue';
     export default{
         name:'Home',
         components:{
-            AHeader:Header,
+            AHeader:Header,            
             ALayout:Layout,
             ALayoutHeader:Layout.Header,
             ALayoutContent:Layout.Content,

@@ -13,14 +13,14 @@
                         :style="{ lineHeight: '70px',height:'70px',float:'left' }"
                     >
                         <a-menu-item key="findMusic">
-                        发现音乐
+                            <router-link to="/">发现音乐</router-link>                        
                         <sub class="cor" v-show="isShowNav2">&nbsp;</sub>
                         </a-menu-item>
                         <a-menu-item key="myMusic">
-                        我的音乐
+                            <router-link to="/myMusic">我的音乐</router-link>
                         </a-menu-item>
                         <a-menu-item key="friends">
-                        朋友
+                            <router-link to="/friends">朋友</router-link> 
                         </a-menu-item>
                         <a-menu-item key="mall">
                         商城
@@ -59,12 +59,12 @@
                         </a-menu-item>
                         <a-menu-item key="rankList">
                             <em>
-                                排行榜
+                                <router-link to="/discover/toplist">排行榜</router-link>                                
                             </em>                         
                         </a-menu-item>
                         <a-menu-item key="songList">
                             <em class="f-pr" style="padding: 0 15px 0 11px;position: relative;">
-                                歌单
+                                <router-link to="/discover/playlist">歌单</router-link>                                
                                 <span class="f-pa f-r-white-icon" style="display:inline-block;width:8px;height:8px;top:2px;background-size:cover;"></span>
                             </em>                         
                         </a-menu-item>

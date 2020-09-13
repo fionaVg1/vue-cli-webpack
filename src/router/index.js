@@ -10,6 +10,10 @@ import Gallery from '@/components/Gallery'
 import List from '@/components/List'
 import Good from '@/components/Good'
 import Recommend from '@/components/Recommend'
+import MyMusic from '@/components/MyMusic'
+import Friends from '@/components/Friends'
+import TopList from '@/components/TopList'
+import PlayList from '@/components/PlayList'
 
 Vue.use(Router)
 
@@ -23,7 +27,23 @@ export default new Router({
                 {
                     path:'/',
                     component:Recommend
-                }
+                },               
+                {
+                    path:'/myMusic',
+                    component:MyMusic
+                },
+                {
+                    path:'/friends',
+                    component:Friends
+                },
+                ,{
+                    path:'/discover/toplist',
+                    component:TopList,                    
+                },
+                {
+                    path:'/discover/playlist',
+                    component:PlayList,
+                },
             ]
         },       
         {

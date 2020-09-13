@@ -23,11 +23,13 @@
 
             </div>
         </div>
+        <a-bottomBar></a-bottomBar>
     </div> 
 </template>
 <script>
     import {Carousel,Icon} from 'ant-design-vue';
     import HotRecommendGrid from '@/components/HotRecommendGrid';
+    import BottomBar from '@/components/BottomBar';
     import image1 from '@/assets/img/carousel_1.jpg'
     import image2 from '@/assets/img/carousel_2.jpg'
     import image3 from '@/assets/img/carousel_3.jpg'
@@ -47,6 +49,7 @@
         components:{
             ACarousel:Carousel,
             AIcon:Icon,
+            ABottomBar:BottomBar,
             HotRecommendGrid:HotRecommendGrid
         },
         data(){
