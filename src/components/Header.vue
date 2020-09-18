@@ -40,7 +40,7 @@
                     <a-button type="primary" ghost style="margin-left:20px;">
                         创作者中心
                     </a-button>
-                    <a-button type="link">
+                    <a-button type="link" @click="onLogin">
                         登录
                     </a-button>                   
             </div>      
@@ -87,16 +87,20 @@
                 </div>                
             </div>
         </div>
+        <login :isLoginVisible="isLoginVisible" @visibleChange="isLoginVisibleChange"></login>
     </div>
 </template>
 <script> 
     import {Menu,Button, Input} from 'ant-design-vue';
+    import Login from '@/components/Login';
     export default{
         name:'Header',
-        components:{AMenu:Menu,AMenuItem:Menu.Item,ASubMenu:Menu.SubMenu,AButton:Button,AInputSearch:Input.Search},
+        components:{AMenu:Menu,AMenuItem:Menu.Item,ASubMenu:Menu.SubMenu,
+                    AButton:Button,AInputSearch:Input.Search,Login:Login},
         data(){
             return{
-                current:'findMusic'
+                current:'findMusic',
+                isLoginVisible:false,
             }
         },
         methods:{
@@ -105,6 +109,12 @@
             },
             onMenuClick(e){
                 this.current = e.key;
+            },
+            onLogin(e){
+                this.isLoginVisible = true;
+            },
+            isLoginVisibleChange(value){
+                this.isLoginVisible = value;
             }
         },
         computed:{

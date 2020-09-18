@@ -13,7 +13,7 @@ axios.defaults.baseURL = 'http://localhost:3000/';
 Vue.config.productionTip = false
 Vue.config.silent = false;
 Vue.prototype.axios = axios
-Vue.use(ref,{name:'ant-ref'});  
+Vue.use(ref,{name:'ant-ref'});
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
