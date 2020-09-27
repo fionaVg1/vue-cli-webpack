@@ -16,7 +16,7 @@
                                 <a-input v-model="ruleForm.verificationCode" autocomplete="off" />
                               </a-col>
                               <a-col class="gutter-row" :span="8">
-                                <a-button type="primary" ghost>获取验证码</a-button>
+                                <a-button type="primary" ghost @click="sendMessage">获取验证码</a-button>
                               </a-col>
                             </a-row>
                           </a-form-model-item>           
@@ -140,11 +140,27 @@
                 this.$refs[formName].resetFields();
             },
             backToTel(){
-              this.loginWay = 'tel';
+                this.loginWay = 'tel';
             },
             toWeixinLogin(){
-              this.loginWay = 'weixin';
-            }         
+                this.loginWay = 'weixin';
+            },
+            sendMessage(){
+                let msgUrl = 'http://utf8.api.smschinese.cn/?Uid=本站用户名&Key=接口安全秘钥&smsMob=手机号码&smsText=验证码:8888';
+                let msg = '验证码：666666';
+                let param = new URLSearchParams();
+                param.append('Uid','wanxiacai');
+                param.append('Key','d41d8cd98f00b204e980');
+                param.append('smsMob','15827048518');
+                param.append('smsText',msg);
+                this.axios.post('/sendMsg/',param,{
+                  headers:{
+                    'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'//必须要加头
+                  }
+                }).then(function(response){
+                  console.log(response)
+                });
+            }      
         }
     }
 </script>

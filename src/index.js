@@ -8,14 +8,14 @@ import axios from 'axios'
 import ref from 'vue-ref'
 import 'ant-design-vue/dist/antd.css';
 import './assets/css/index.css'
-import antInputDirective from 'ant-design-vue/es/_util/antInputDirective'
+import antDirective from 'ant-design-vue/es/_util/antDirective'
 axios.defaults.baseURL = 'http://localhost:3000/';
 
 Vue.config.productionTip = false
 Vue.config.silent = false;
 Vue.prototype.axios = axios
 Vue.use(ref,{name:'ant-ref'});
-Vue.use(antInputDirective)
+Vue.use(antDirective)
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

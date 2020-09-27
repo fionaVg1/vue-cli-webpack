@@ -7,7 +7,7 @@
                     <img :src="cover.imgSrc" alt="">
                     <a :href="cover.musicHref" class="mask"></a>
                     <div class="bottom">
-                        <a href="javascript:;" class="playIcon"></a>
+                        <a href="javascript:;" class="playIcon" @click="musicPlay"></a>
                         <span class="iconHead"></span>
                         <span class="number">{{cover.numberStr}}</span>
                     </div>
@@ -98,7 +98,25 @@
             ];
         },
         methods:{
-            
+            musicPlay(){
+                this.axios.get('/api/getMusicByName',{
+                    params:{
+                        name:'刀马旦'
+                    }
+                }).then(response=>{        
+                    let myAudio = document.getElementById("myAudio");
+                    let srcElement = document.getElementsByTagName("source")[0]; 
+                    let blob = new Blob([response.data]);
+                    let blobUrl = URL.createObjectURL(blob);
+                    srcElement.src = blobUrl;
+                    myAudio.addEventListener('ended',function(){
+                        console.log(arguments);
+                    });
+                    myAudio.play();
+                }).catch(error=>{
+                    console.log((error));
+                });
+            }
         }
     }
 </script>
