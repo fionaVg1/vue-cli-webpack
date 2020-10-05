@@ -99,23 +99,9 @@
         },
         methods:{
             musicPlay(){
-                this.axios.get('/api/getMusicByName',{
-                    params:{
-                        name:'刀马旦'
-                    }
-                }).then(response=>{        
-                    let myAudio = document.getElementById("myAudio");
-                    let srcElement = document.getElementsByTagName("source")[0]; 
-                    let blob = new Blob([response.data]);
-                    let blobUrl = URL.createObjectURL(blob);
-                    srcElement.src = blobUrl;
-                    myAudio.addEventListener('ended',function(){
-                        console.log(arguments);
-                    });
-                    myAudio.play();
-                }).catch(error=>{
-                    console.log((error));
-                });
+                let playBar = document.getElementById('playBar');
+                playBar.dataset.musicName = '刀马旦';
+                playBar.click();               
             }
         }
     }

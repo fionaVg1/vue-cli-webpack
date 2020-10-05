@@ -3,7 +3,7 @@
         <audio id="myAudio" controls="controls">
             <source type="audio/mp3">
         </audio>
-        <div class="playBar" @mouseover="bottomBarShow" @mouseout="bottomBarHide">
+        <div id="playBar" class="playBar" @mouseover="bottomBarShow" @mouseout="bottomBarHide" @click="playBarClick">
             <div class="lock">
                 <div class="left">
                     <a class="btn" href="javascript:;"></a>
@@ -80,6 +80,27 @@ export default {
             if(!this.isLocked){
                 target.style.top = '-7px';
             }
+        },
+        playBarClick(event){
+            var target = event.target;
+            var musicName = target.dataset.musicName;
+            this.axios.get('/api/getMusicByName',{
+                    params:{
+                        name:musicName
+                    }
+            }).then(response=>{        
+                let myAudio = document.getElementById("myAudio");
+                let srcElement = document.getElementsByTagName("source")[0]; 
+                let blob = new Blob([response.data]);
+                let blobUrl = URL.createObjectURL(blob);
+                srcElement.src = blobUrl;
+                myAudio.addEventListener('ended',function(){
+                    console.log(arguments);
+                });
+                myAudio.play();
+            }).catch(error=>{
+                console.log((error));
+            });
         }
     }
 }
