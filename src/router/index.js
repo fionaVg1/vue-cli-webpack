@@ -12,9 +12,9 @@ import Good from '@/components/Good'
 import Recommend from '@/components/Recommend'
 import MyMusic from '@/components/MyMusic'
 import Friends from '@/components/Friends'
-import TopList from '@/components/TopList'
 import PlayList from '@/components/PlayList'
 
+import {routes as topic} from '@/module/topic/router.js'
 Vue.use(Router)
 
 export default new Router({
@@ -35,15 +35,12 @@ export default new Router({
                 {
                     path:'/friends',
                     component:Friends
-                },
-                ,{
-                    path:'/discover/toplist',
-                    component:TopList,                    
-                },
+                },                
                 {
                     path:'/discover/playlist',
                     component:PlayList,
                 },
+                ...topic
             ]
         },       
         {
@@ -74,7 +71,7 @@ export default new Router({
         {
             path:'/good/*',
             name:'Good',
-            component:Good
-        }
+            component:resolve => require(['@/components/Good'], resolve)
+        },      
     ]
 })

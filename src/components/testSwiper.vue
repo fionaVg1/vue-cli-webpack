@@ -7,6 +7,7 @@
                 </div>
             </swiper-item>
         </swiper>
+        <input v-model="test" type="text">
     </div>
 </template>
 <script>
@@ -20,6 +21,7 @@
         },
         data() {
             return {
+                test:'',
                 selected: 'item2',
                 images: [{
                     id: 1,
