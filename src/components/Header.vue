@@ -54,7 +54,7 @@
                     >
                         <a-menu-item key="recommend">
                             <em>
-                                推荐
+                                <router-link to="/discover/hotlist">推荐</router-link>                                  
                             </em>                                               
                         </a-menu-item>
                         <a-menu-item key="rankList">
