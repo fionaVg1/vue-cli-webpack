@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Router from '../myRouter'
 import HelloWorld from '@/components/HelloWorld'
-import Login from '@/components/Login'
+
 import Home from '@/components/Home'
 import testSwiper from '@/components/testSwiper'
 import ModuleThink from '@/components/ModuleThink'
@@ -23,29 +22,27 @@ export default new Router({
             path: '/',
             name: 'Home',
             component: Home,
-            children:[
-                {
-                    path:'/',
-                    component:Recommend
-                },               
-                {
-                    path:'/myMusic',
-                    component:MyMusic
+            children: [{
+                    path: '/',
+                    component: Recommend
                 },
                 {
-                    path:'/friends',
-                    component:Friends
-                },
-                ,{
-                    path:'/discover/toplist',
-                    component:TopList,                    
+                    path: '/myMusic',
+                    component: MyMusic
                 },
                 {
-                    path:'/discover/playlist',
-                    component:PlayList,
+                    path: '/friends',
+                    component: Friends
+                }, , {
+                    path: '/discover/toplist',
+                    component: TopList,
+                },
+                {
+                    path: '/discover/playlist',
+                    component: PlayList,
                 },
             ]
-        },       
+        },
         {
             path: '/index',
             name: 'HelloWorld',
@@ -67,14 +64,27 @@ export default new Router({
             component: Gallery
         },
         {
-            path:'/list',
-            name:'List',
-            component:List
+            path: '/list',
+            name: 'List',
+            component: List
         },
         {
-            path:'/good/*',
-            name:'Good',
-            component:Good
+            path: '/good/*',
+            name: 'Good',
+            component: Good
+        },
+        {
+            path: '/noGrapScroll',
+            name: 'noGrapScroll',
+            component: () =>
+                import ('../components/noGrapScroll')
+        },
+        {
+            path: '/lazyImage',
+            name: 'LazyImage',
+            component: () =>
+                import ('../components/lazyImage')
         }
+
     ]
 })
