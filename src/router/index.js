@@ -13,7 +13,7 @@ import MyMusic from '@/components/MyMusic'
 import Friends from '@/components/Friends'
 import PlayList from '@/components/PlayList'
 
-import {routes as topic} from '@/module/topic/router.js'
+import { routes as topic } from '@/module/topic/router.js'
 Vue.use(Router)
 
 export default new Router({
@@ -27,22 +27,9 @@ export default new Router({
                     component: Recommend
                 },
                 {
-<<<<<<< HEAD
-                    path: '/myMusic',
-                    component: MyMusic
-                },
-                {
                     path: '/friends',
                     component: Friends
-                }, , {
-                    path: '/discover/toplist',
-                    component: TopList,
                 },
-=======
-                    path:'/friends',
-                    component:Friends
-                },                
->>>>>>> b78b0a350f21886073c2539b3b807259e3da99f0
                 {
                     path: '/discover/playlist',
                     component: PlayList,
@@ -76,7 +63,6 @@ export default new Router({
             component: List
         },
         {
-<<<<<<< HEAD
             path: '/good/*',
             name: 'Good',
             component: Good
@@ -94,11 +80,5 @@ export default new Router({
                 import ('../components/lazyImage')
         }
 
-=======
-            path:'/good/*',
-            name:'Good',
-            component:resolve => require(['@/components/Good'], resolve)
-        },      
->>>>>>> b78b0a350f21886073c2539b3b807259e3da99f0
     ]
 })
