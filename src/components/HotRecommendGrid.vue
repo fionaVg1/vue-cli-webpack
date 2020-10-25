@@ -7,7 +7,7 @@
                     <img :src="cover.imgSrc" alt="">
                     <a :href="cover.musicHref" class="mask"></a>
                     <div class="bottom">
-                        <a href="javascript:;" class="playIcon"></a>
+                        <a href="javascript:;" class="playIcon" @click="musicPlay"></a>
                         <span class="iconHead"></span>
                         <span class="number">{{cover.numberStr}}</span>
                     </div>
@@ -98,7 +98,11 @@
             ];
         },
         methods:{
-            
+            musicPlay(){
+                let playBar = document.getElementById('playBar');
+                playBar.dataset.musicName = '刀马旦';
+                playBar.click();               
+            }
         }
     }
 </script>

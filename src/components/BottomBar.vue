@@ -1,6 +1,9 @@
 <template>
     <div class="bottomBar">
-        <div class="playBar" @mouseover="bottomBarShow" @mouseout="bottomBarHide">
+        <audio id="myAudio" controls="controls">
+            <source type="audio/mp3">
+        </audio>
+        <div id="playBar" class="playBar" @mouseover="bottomBarShow" @mouseout="bottomBarHide" @click="playBarClick">
             <div class="lock">
                 <div class="left">
                     <a class="btn" href="javascript:;"></a>
@@ -24,11 +27,15 @@
                 <div class="play">
                     <div class="j-flag words"></div>
                     <div class="m-pbar" data-action="noop">
-                    <div class="barbg j-flag" id="auto-id-hli4iTz4iVAsqSLH">
-                    <div class="rdy" style="width:0%;"></div>
-                    <div class="cur" style="width:0%;"><span class="btn f-tdn f-alpha" id="auto-id-hwxIhF5yO9esZFau"><i></i></span></div>
-                    </div>
-                    <span class="j-flag time"><em>00:00</em> / 00:00</span>
+                        <div class="barbg j-flag" id="auto-id-hli4iTz4iVAsqSLH">
+                            <div class="rdy" style="width:0%;"></div>
+                            <div class="cur" style="width:0%;">
+                                <span class="btn f-tdn f-alpha" id="auto-id-hwxIhF5yO9esZFau">
+                                    <i></i>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="j-flag time"><em>00:00</em> / 00:00</span>
                     </div>
                 </div>
                 <div class="oper">
@@ -73,11 +80,33 @@ export default {
             if(!this.isLocked){
                 target.style.top = '-7px';
             }
+        },
+        playBarClick(event){
+            var target = event.target;
+            var musicName = target.dataset.musicName;
+            this.axios.get('/api/getMusicByName',{
+                    params:{
+                        name:musicName
+                    }
+            }).then(response=>{        
+                let myAudio = document.getElementById("myAudio");
+                let srcElement = document.getElementsByTagName("source")[0]; 
+                let blob = new Blob([response.data]);
+                let blobUrl = URL.createObjectURL(blob);
+                srcElement.src = blobUrl;
+                myAudio.addEventListener('ended',function(){
+                    console.log(arguments);
+                });
+                myAudio.play();
+            }).catch(error=>{
+                console.log((error));
+            });
         }
     }
 }
 </script>
-<style scoped>
+<style scoped lang="less">
+    @playbar_bg:url("../assets/img/playbar.png");
     .bottomBar{
         position:fixed;
         zoom: 1;
@@ -99,7 +128,7 @@ export default {
     .playBar .bg{
         height: 53px;
         margin-right: 67px;
-        background: url("../assets/img/playbar.png");
+        background: @playbar_bg;
         background-position:0 0;
         background-repeat:repeat-x;
     }
@@ -128,7 +157,7 @@ export default {
         padding: 6px 0 0 0;
     }
     .playBar .wrap .btns a{
-        background:url("../assets/img/playbar.png") no-repeat 0 9999px;
+        background:@playbar_bg;
         display: block;
         float:left;
         width: 28px;
@@ -164,8 +193,96 @@ export default {
         display: block;
         width: 34px;
         height: 35px;
-        background:url("../assets/img/playbar.png") no-repeat 0 9999px;
+        background:@playbar_bg;
         background-position: 0 -80px;
+    }
+    .playBar .wrap .play{
+        position:relative;
+        width: 608px;
+    }
+    .playBar .wrap .play .words{
+        height: 28px;
+        overflow:hidden;
+        color: #e8e8e8;
+        text-shadow: 0 1px 0 #171717;
+        line-height: 28px;
+    }
+    .playBar .wrap .play .m-pbar,.playBar .wrap .play .m-pbar .barbg {
+        width: 493px;
+    }
+    .playBar .wrap .play .m-pbar{
+        position: relative;
+    }
+    .m-pbar .barbg,.m-pbar .cur,.m-pbar .rdy,.m-pbar .left {
+        background: url("../assets/img/statbar.png") no-repeat 0 9999px;
+    }
+    .m-pbar .barbg, .m-pbar .cur, .m-pbar .rdy{
+        height: 9px;
+        background-position: right 0;
+    }
+    .rdy{
+        background-position: right -30px;
+    }
+    .cur{
+        position: absolute;
+        top:0;
+        left:0;
+        background-position: left -66px;
+    }
+    .m-pbar .time {
+        position: absolute;
+        top: -6px;
+        right: -90px;
+        color: #797979;
+        text-shadow: 0 1px 0 #121212;
+    }
+
+    .m-pbar .time em {
+        color: #a1a1a1;
+    }
+    .m-pbar .btn{
+        background: url("../assets/img/iconall.png") no-repeat 0 9999px;
+        position: absolute;
+        top:-7px;
+        right: -13px;
+        width: 22px;
+        height: 24px;
+        margin-left: -11px;
+        background-position: 0 -250px;
+    }
+    .m-pbar .btn i{
+        visibility: hidden;
+        position: absolute;
+        left:5px;
+        top:5px;
+        width: 12px;
+        height: 12px;
+        background: url("../assets/img/loading.gif");
+    }
+    .playBar .oper{
+        width: 60px;
+    }
+    .playBar .icn {
+        float: left;
+        width: 25px;
+        height: 25px;
+        margin: 11px 2px 0 0;
+        text-indent: -9999px;
+        background:@playbar_bg;
+    }
+    .playBar .icn-add {
+        background-position: -88px -163px;
+    }
+
+    .playBar .icn-add:hover {
+        background-position: -88px -189px;
+    }
+    .playBar .icn-share {
+        background-position: -114px -163px;
+    }
+
+    .playBar .icn-share:hover {
+        background-position: -114px -189px;
     }
     .playBar .lock{
         position: relative;
@@ -177,12 +294,12 @@ export default {
         right:15px;
         width:53px;
         height: 67px;
-        background: url("../assets/img/playbar.png") no-repeat 0 9999px;
+        background: @playbar_bg;
         background-position: 0 -380px;
         float:left;
     }
     .playBar .lock .left .btn{
-        background: url("../assets/img/playbar.png") no-repeat 0 9999px;
+        background: @playbar_bg;
         background-position: -100px -380px;
         display: block;
         width: 18px;
@@ -191,7 +308,7 @@ export default {
     }
     .playBar .lock .right{
         float:left;
-        background: url("../assets/img/playbar.png") no-repeat 0 9999px;
+        background: @playbar_bg;
         position: absolute;
         top:-1px;
         right: 0;

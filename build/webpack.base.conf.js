@@ -51,6 +51,14 @@ module.exports = {
                 loader: 'happypack/loader?id=happyvue',
             },
             {
+                test: /\.less$/,
+                use: [
+                  'vue-style-loader',
+                  'css-loader',
+                  'less-loader'
+                ]
+            },
+            {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
