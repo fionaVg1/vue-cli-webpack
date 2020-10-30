@@ -78,7 +78,13 @@ export default new Router({
             name: 'LazyImage',
             component: () =>
                 import ('../components/lazyImage')
+        },
+        {
+            path:'/test',
+            name:'test',
+            component:()=>import('../components/Test')
         }
+
 
     ]
 })
