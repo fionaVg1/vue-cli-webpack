@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-
 import Home from '@/components/Home'
 import testSwiper from '@/components/testSwiper'
 import ModuleThink from '@/components/ModuleThink'
@@ -80,9 +79,10 @@ export default new Router({
                 import ('../components/lazyImage')
         },
         {
-            path:'/test',
-            name:'test',
-            component:()=>import('../components/Test')
+            path: '/test',
+            name: 'test',
+            component: () =>
+                import ('../components/Test')
         }
 
 
