@@ -82,7 +82,7 @@ export default new Router({
             path: '/test',
             name: 'test',
             component: () =>
-                import ('../components/Test')
+                import ('../components/TResizeDirective')
         }
 
 
